@@ -29,6 +29,9 @@
   --worker-machine-type=n1-standard-2 \
   --num-workers=2
 
+    - gcloud dataproc clusters update my-cluster \
+  --scopes=cloud-platform
+
 
  - 5: gcloud compute firewall-rules create allow-internal-ssh \
      --network=my-vpc \
