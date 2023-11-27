@@ -25,12 +25,10 @@
   --subnet=my-subnet \
   --region=your-region \
   --zone=your-zone \
+  --scopes=cloud-platform \
   --master-machine-type=n1-standard-2 \
   --worker-machine-type=n1-standard-2 \
   --num-workers=2
-
-    - gcloud dataproc clusters update my-cluster \
-  --scopes=cloud-platform
 
 
  - 5: gcloud compute firewall-rules create allow-internal-ssh \
