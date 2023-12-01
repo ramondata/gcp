@@ -7,8 +7,8 @@ def conn_pub_sub(self) -> None:
 
 
 def message_contains_file_name(self):
-        project_id = "cerc2-gestop-stg"
-        topic_name = "file-name-conc-received"
+        project_id = <project-id>
+        topic_name = <topic-name>
         message_data = self.zip_var
 
         self.conn_pub_sub()
