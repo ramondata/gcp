@@ -6,8 +6,8 @@ def conn_pub_sub(self):
   
 
 def message_received_file_name(self):
-        project_id = "cerc2-gestop-stg"
-        subscription_id = "file-name-conc-received-sub"
+        project_id = <project-id>
+        subscription_id = <subscriber-id>
 
         self.conn_pub_sub()
 
