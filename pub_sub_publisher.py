@@ -1,6 +1,11 @@
 from google.cloud import pubsub_v1
 
 
+def conn_pub_sub(self) -> None:
+        self.publisher = pubsub_v1.PublisherClient()
+        return
+
+
 def message_contains_file_name(self):
         project_id = "cerc2-gestop-stg"
         topic_name = "file-name-conc-received"
