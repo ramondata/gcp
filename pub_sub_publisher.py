@@ -7,14 +7,14 @@ def conn_pub_sub(self) -> None:
 
 
 def message_contains_file_name(self):
-        project_id = <project-id>
-        topic_name = <topic-name>
-        message_data = self.zip_var
+        project_id = "cerc2-gestop-stg"
+        topic_name = "file-name-conc-received"
+        message_data = self.zip_var.encode("utf-8")
 
         self.conn_pub_sub()
         topic_path = self.publisher.topic_path(project_id, topic_name)
 
-        message = message_data.encode("utf-8")
+        future = self.publisher.publish(topic_path, data=message_data, tr= "%s" % self.trade_repo, type= "%s" % self.type_conc)
+        self.log.info("Published message ID: %s" % future.result())
 
-        future = self.publisher.publish(topic_path, data=message)
-        print(f"Published message ID: {future.result()}")
+    
