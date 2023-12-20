@@ -6,38 +6,44 @@ def conn_pub_sub(self):
   
 
 def message_received_file_name(self):
-        project_id = <project-id>
-        subscription_id = <subscriber-id>
+        project_id = "cerc2-gestop-stg"
+        subscription_id = "%s-%s" % (self.dir, self.tr)
 
         self.conn_pub_sub()
 
         subscription_path = self.subscriber.subscription_path(project_id, subscription_id)
 
         response = self.subscriber.pull(
-               request={"subscription": subscription_path, "max_messages": 2})
-        self.zip_var = [msg.message.data for msg in response.received_messages]
-        
-        count = len(self.zip_var)
-        print("count pub sub message ", count)
+               request={"subscription": subscription_path, "max_messages": 18})
+        self.msg = [msg.message.data for msg in response.received_messages]
+
+        count = len(self.msg)
+        self.log.info("Total message pub/sub: %s" % count)
         
         if count == 0:
-            return "pull does not work"
+            self.log.error("Subscriber pull error")
+            exit(1)        
         else:
-            self.zip_var = self.zip_var[-1].decode('utf-8')
-            print("zip_var ", self.zip_var)
+            for item in self.msg:
+                item = item.decode('utf-8')
+                if self.tr.upper() in item:
+                    self.zip_var = item
+                else:
+                    pass
+            self.log.info("File received: %s" % self.zip_var)
 
         def callback(message):
-            print(f"Received message: {message.data}")
+            self.log.info("Received message: %s" % message.data)
             global data
             data = message.data
             message.ack()
 
         data = None
         self.subscriber.subscribe(subscription_path, callback=callback)
-        
+
         if data == None:
             pass
         else:
             self.zip_var = data
             
-        print("new_self_zip_var", self.zip_var)
+        self.log.info("Double check file name: %s" % self.zip_var)
