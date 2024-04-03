@@ -3,5 +3,5 @@
 SELECT
   *
 FROM
-  cerc2-gestop-stg.`region-southamerica-east1`.INFORMATION_SCHEMA.OBJECT_PRIVILEGES
-WHERE OBJECT_NAME = "interop"
+  <project-id>.`region-southamerica-east1`.INFORMATION_SCHEMA.OBJECT_PRIVILEGES
+WHERE OBJECT_NAME = "<dataset-id>"
