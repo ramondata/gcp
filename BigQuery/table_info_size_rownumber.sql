@@ -18,3 +18,7 @@ SELECT
 FROM
   `<project><dataset>.__TABLES__`
 ORDER BY size_gb DESC;
+
+
+select *
+FROM `<project-id>`.`region-southamerica-east1`.INFORMATION_SCHEMA.TABLES
