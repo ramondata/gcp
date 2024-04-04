@@ -1,0 +1,5 @@
+select 
+  *
+ from `table`
+ FOR SYSTEM_TIME AS OF
+  TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 3 DAY)
