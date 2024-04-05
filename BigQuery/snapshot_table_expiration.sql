@@ -1,3 +1,5 @@
+-- Used instead create a complete copy(clone) from a base table
+
 CREATE SNAPSHOT TABLE `temp.snapshot_from_table_test`
 CLONE `table_source`
   OPTIONS (
