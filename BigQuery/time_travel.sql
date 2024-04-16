@@ -5,8 +5,8 @@ select
   TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 3 DAY)
 
  
-- example:
-```insert into `table-destination`
+-- example:
+insert into `table-destination`
 select
 effect_protocol  ,		
 effect_priority ,
@@ -35,4 +35,3 @@ reference_date
 from `table-base`
 FOR SYSTEM_TIME AS OF TIMESTAMP_SUB(CURRENT_TIMESTAMP, INTERVAL 3 DAY)
 where date='2024-01-14'
-```
